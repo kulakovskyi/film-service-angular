@@ -34,8 +34,6 @@ export class SearchComponent implements OnInit{
     const formValue: SearchFormInterface = {...this.searchForm.value}
     this.searchMovieService.getSearchMovie(formValue.movieName).subscribe(res => {
       this.searchResults = res.results
-      console.log(this.searchResults)
-
     })
   }
 }

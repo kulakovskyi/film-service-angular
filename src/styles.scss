@@ -8,3 +8,11 @@ body{
   background: black;
   color: white;
 }
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+.owl-theme .owl-nav{
+  display: none;
+}
+

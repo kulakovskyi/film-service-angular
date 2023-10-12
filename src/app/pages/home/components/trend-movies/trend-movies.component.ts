@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {MovieApiService} from "../../../../shared/services/movie-api.service";
 import {DataResultsInterface} from "../../../../shared/types/data.interface";

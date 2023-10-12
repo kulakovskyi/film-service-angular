@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {MovieApiService} from "../../../../shared/services/movie-api.service";
 import {Title} from "@angular/platform-browser";
+import { register } from 'swiper/element/bundle';
 
 @Component({
   selector: 'app-home',
@@ -15,5 +15,6 @@ export class HomeComponent implements OnInit{
 
   ngOnInit() {
     this.title.setTitle('Home');
+    register();
   }
 }
