@@ -1,0 +1,11 @@
+<div class="row mt-4">
+    <h5 class="text-white">Action Movies</h5>
+    <div class="rowposter mt-3 p-2">
+        <ng-container *ngIf="actionMoviesResults$ | async as actionMovies; else loading">
+            <img *ngFor="let actionMovie of actionMovies" src="https://image.tmdb.org/t/p/original/{{ actionMovie.poster_path }}" class="rowimg largeposter" alt="{{ actionMovie.original_title }}"
+                 [routerLink]="['/movie',actionMovie.id]">
+        </ng-container>
+        <ng-template #loading>Loading...</ng-template>
+
+    </div>
+</div>
