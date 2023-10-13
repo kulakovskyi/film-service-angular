@@ -3,18 +3,19 @@ import {MovieDetailsComponent} from "./components/movie-details/movie-details.co
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {MovieInfoService} from "../../shared/services/movie-info.service";
-import {LoaderComponent} from "../../shared/blocks/loader/loader.component";
+import {SharedModule} from "../../shared/blocks/shared.module";
+
 
 @NgModule({
   declarations:[
     MovieDetailsComponent,
-    LoaderComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {path:':id', component: MovieDetailsComponent}
-    ])
+    ]),
+    SharedModule
   ],
   providers:[MovieInfoService]
 })

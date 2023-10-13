@@ -18,12 +18,7 @@ export class MovieApiService{
     return this.http.get<DataInterface>(`${Environment.baseurl}/trending/all/week?api_key=${Environment.apikey}`)
   }
 
-  getBannerDataBan(): Observable<DataResultsInterface[]>{
-    return this.http.get<DataInterface>(`${Environment.baseurl}/trending/all/week?api_key=${Environment.apikey}`)
-      .pipe(
-        map(data => data.results)
-      )
-  }
+
 
 
   getTrendMovies(): Observable<DataResultsInterface[]>{

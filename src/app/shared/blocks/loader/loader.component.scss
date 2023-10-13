@@ -19,9 +19,12 @@
 svg{
   width: 130px;
   height: 130px;
+  @media screen and (max-width: 670px){
+    width: 60px;
+    height: 60px;
+  }
 }
 svg path,
 svg rect{
-
   fill: red;
 }

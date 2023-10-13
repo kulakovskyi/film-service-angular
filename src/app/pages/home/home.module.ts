@@ -13,6 +13,8 @@ import {DocumentaryMoviesComponent} from './components/documentary-movies/docume
 import {ScienceMoviesComponent} from './components/science-movies/science-movies.component';
 import {TrillerMoviesComponent} from './components/triller-movies/triller-movies.component';
 import {CarouselModule} from "ngx-owl-carousel-o";
+import {SharedModule} from "../../shared/blocks/shared.module";
+
 
 
 @NgModule({
@@ -27,7 +29,6 @@ import {CarouselModule} from "ngx-owl-carousel-o";
         DocumentaryMoviesComponent,
         ScienceMoviesComponent,
         TrillerMoviesComponent,
-
     ],
 
     imports: [
@@ -36,12 +37,12 @@ import {CarouselModule} from "ngx-owl-carousel-o";
             {path: '', component: HomeComponent}
         ]),
         CarouselModule,
+      SharedModule
 
     ],
 
-
-
     providers: [MovieApiService],
+
 
 })
 

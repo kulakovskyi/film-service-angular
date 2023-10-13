@@ -9,9 +9,11 @@ import { RouterModule} from "@angular/router";
 import {FooterModule} from "./shared/blocks/footer/footer.module";
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
+
     ],
     imports: [
         BrowserModule,
@@ -24,7 +26,6 @@ import {FooterModule} from "./shared/blocks/footer/footer.module";
     ],
     providers: [],
     exports: [
-
     ],
     bootstrap: [AppComponent]
 })
