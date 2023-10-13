@@ -1,32 +1,30 @@
-<div class="contain mt-5 p-5">
+<div class="search">
+  <div class="search__container">
     <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
-        <div class="row">
-            <div class="mb-3 col-lg-10">
-                <input type="text" class="form-control"  formControlName="movieName" placeholder="Search Movie Here ...">
-            </div>
+      <div class="form__row">
+        <input type="text" class="form__input" formControlName="movieName" placeholder="Search Movie Here ...">
 
-            <div class="col-lg-2">
-                <button class="btn btn-md">Search</button>
-            </div>
-        </div>
-
+        <button class="form__btn">Search</button>
+      </div>
     </form>
     <ng-container *ngIf="searchResults?.length === 0">
-        Not results...
+      Not results...
     </ng-container>
-    <div class="row mt-5">
-        <div class="col-lg-4" *ngFor="let searchResult of searchResults">
-            <div class="row">
-                <div class="col-lg-3 mt-4 mb-4" *ngIf="searchResult.poster_path">
-                    <img src="https://image.tmdb.org/t/p/original/{{ searchResult.poster_path }}"
-                            [routerLink]="['/movie',searchResult.id]"
-                    >
-                </div>
-                <div class="col-lg-9 mt-4 mb-4">
-                    <h5>{{searchResult.original_title}}</h5>
-                </div>
-            </div>
+    <app-loader *ngIf="isLoading"></app-loader>
+    <div class="search__result">
+      <div class="search__result-list">
+        <div *ngFor="let searchResult of searchResults">
+          <div class="search__result-item"  [routerLink]="['/movie',searchResult.id]">
+          <div class="search__result-item-img" *ngIf="searchResult.poster_path">
+            <img src="https://image.tmdb.org/t/p/original/{{ searchResult.poster_path }}"
+                 >
+          </div>
+         <div class="search__result-item-title">
+           {{searchResult.original_title}}
+         </div>
+          </div>
         </div>
+      </div>
     </div>
-
+  </div>
 </div>

@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit{
 
   searchForm!: FormGroup
   searchResults!: SearchResponseResults[]
+  isLoading! :boolean
 
   constructor(private title: Title,
               private searchMovieService: SearchMovieService) {
@@ -31,9 +32,11 @@ export class SearchComponent implements OnInit{
   }
 
   submitForm() {
+    this.isLoading = true
     const formValue: SearchFormInterface = {...this.searchForm.value}
     this.searchMovieService.getSearchMovie(formValue.movieName).subscribe(res => {
       this.searchResults = res.results
+      this.isLoading = false
     })
   }
 }

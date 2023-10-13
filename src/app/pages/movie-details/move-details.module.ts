@@ -3,10 +3,12 @@ import {MovieDetailsComponent} from "./components/movie-details/movie-details.co
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {MovieInfoService} from "../../shared/services/movie-info.service";
+import {LoaderComponent} from "../../shared/blocks/loader/loader.component";
 
 @NgModule({
   declarations:[
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,

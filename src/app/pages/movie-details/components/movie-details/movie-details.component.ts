@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {MovieInfoService} from "../../../../shared/services/movie-info.service";
-import {Subscription} from "rxjs";
 import {MovieInfoInterface} from "../../../../shared/types/movie-info.interface";
 import {MovieInterface} from "../../../../shared/types/movie.interface";
-import {cast, MovieCastInterface} from "../../../../shared/types/movie-cast.interface";
+import {cast, crew, MovieCastInterface} from "../../../../shared/types/movie-cast.interface";
 import {Title} from "@angular/platform-browser";
 
 @Component({
@@ -19,6 +18,8 @@ export class MovieDetailsComponent implements OnInit{
   movieVideoResultKey! : string
   getMovieCastResult! : MovieCastInterface
   movieCastResultCasts!: cast[]
+  movieCastResultCrews!: crew[]
+  isLoading! :boolean
   constructor(private route: ActivatedRoute,
               private movieInfoService: MovieInfoService,
               private title: Title,
@@ -32,15 +33,18 @@ export class MovieDetailsComponent implements OnInit{
         window.scrollTo(0, 0);
       }
     });
+    this.isLoading = true
     let getParamId: string | null = this.route.snapshot.paramMap.get('id');
     this.getMovie(getParamId)
     this.getVideo(getParamId)
     this.getMovieCast(getParamId)
+    this.isLoading = false
   }
 
   getMovie(id: string | null ){
     this.movieInfoService.getMovieDetails(id).subscribe((res: MovieInfoInterface ) => {
       this.getMovieDetailResult =  res;
+
       this.title.setTitle(`${this.getMovieDetailResult.original_title} | ${this.getMovieDetailResult.tagline}`)
     })
   }
@@ -48,6 +52,7 @@ export class MovieDetailsComponent implements OnInit{
   getVideo(id: string | null){
     this.movieInfoService.getMovieVideo(id).subscribe(res => {
       this.getMovieVideoResult = res
+
       res.results.forEach((element) => {
         if(element.type=="Trailer")
         {
@@ -61,6 +66,7 @@ export class MovieDetailsComponent implements OnInit{
     this.movieInfoService.getMovieCast(id).subscribe((res)=>{
       this.getMovieCastResult = res;
       this.movieCastResultCasts = res.cast
+      this.movieCastResultCrews = res.crew
     });
   }
 }

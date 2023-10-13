@@ -6,3 +6,13 @@ html {
 body {
   min-height: 100vh;
 }
+
+.wrapper{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.router{
+  flex: 1 1 auto;
+}
