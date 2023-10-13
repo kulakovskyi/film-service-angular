@@ -15,7 +15,6 @@ import {TrillerMoviesComponent} from './components/triller-movies/triller-movies
 import {CarouselModule} from "ngx-owl-carousel-o";
 
 
-
 @NgModule({
     declarations: [
         HomeComponent,
@@ -37,6 +36,7 @@ import {CarouselModule} from "ngx-owl-carousel-o";
             {path: '', component: HomeComponent}
         ]),
         CarouselModule,
+
     ],
 
 

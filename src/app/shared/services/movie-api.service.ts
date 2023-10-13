@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {map, Observable, tap} from "rxjs";
 import {Environment} from "../../../environment/environment";
 import {DataInterface, DataResultsInterface} from "../types/data.interface";
 
@@ -18,12 +18,20 @@ export class MovieApiService{
     return this.http.get<DataInterface>(`${Environment.baseurl}/trending/all/week?api_key=${Environment.apikey}`)
   }
 
+  getBannerDataBan(): Observable<DataResultsInterface[]>{
+    return this.http.get<DataInterface>(`${Environment.baseurl}/trending/all/week?api_key=${Environment.apikey}`)
+      .pipe(
+        map(data => data.results)
+      )
+  }
+
 
   getTrendMovies(): Observable<DataResultsInterface[]>{
     return this.http.get<DataInterface>(`${Environment.baseurl}/trending/movie/day?api_key=${Environment.apikey}`)
         .pipe(
             map(data => data.results)
         )
+
   }
 
   getActionMovie() : Observable<DataResultsInterface[]>{

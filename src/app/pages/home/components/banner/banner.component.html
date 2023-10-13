@@ -3,10 +3,6 @@
     <owl-carousel-o [options]="customOptions">
         <ng-template carouselSlide *ngFor="let bannerResult of bannerResults;let i=index">
             <img src="https://image.tmdb.org/t/p/original/{{ bannerResult.backdrop_path }}" class="d-block w-100" alt="{{ bannerResult.original_title }}">
-<!--            <div class="carousel-caption d-none d-md-block">-->
-<!--                <h2>{{bannerResult.original_title || bannerResult.name}}</h2>-->
-<!--                <p>{{bannerResult.overview}}</p>-->
-<!--            </div>-->
           <div class="info">
             <div class="info__wrapper">
               <div class="info__title">{{bannerResult.original_title || bannerResult.name}}</div>

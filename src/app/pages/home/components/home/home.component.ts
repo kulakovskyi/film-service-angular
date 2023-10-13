@@ -1,6 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Title} from "@angular/platform-browser";
-import { register } from 'swiper/element/bundle';
+import {MovieApiService} from "../../../../shared/services/movie-api.service";
+import {DataInterface, DataResultsInterface} from "../../../../shared/types/data.interface";
+import {Observable, Subscription} from "rxjs";
+
 
 @Component({
   selector: 'app-home',
@@ -10,11 +13,12 @@ import { register } from 'swiper/element/bundle';
 })
 export class HomeComponent implements OnInit{
 
+
   constructor(private title: Title) {
   }
 
   ngOnInit() {
     this.title.setTitle('Home');
-    register();
+
   }
 }

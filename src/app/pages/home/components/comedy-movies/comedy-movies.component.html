@@ -1,11 +1,22 @@
-<div class="row mt-4">
-    <h5 class="text-white">Action Movies</h5>
-    <div class="rowposter mt-3 p-2">
-        <ng-container *ngIf="comedyMoviesResults$ | async as comedyMovies; else loading">
-            <img *ngFor="let comedyMovie of comedyMovies" src="https://image.tmdb.org/t/p/original/{{ comedyMovie.poster_path }}" class="rowimg largeposter" alt="{{ comedyMovie.original_title }}"
-                 [routerLink]="['/movie',comedyMovie.id]">
-        </ng-container>
-        <ng-template #loading>Loading...</ng-template>
+<div class="film-row">
+  <h5 class="title-film">Comedy Movies</h5>
+  <owl-carousel-o [options]="customOptions" *ngIf="comedyMoviesResults$ | async as comedyMovies; else loading">
+    <ng-template carouselSlide *ngFor="let comedyMovie of comedyMovies">
+      <div class="movie-card">
+        <div class="movie-card__image">
+          <img src="https://image.tmdb.org/t/p/original/{{ comedyMovie.poster_path }}"
+               alt="{{ comedyMovie.original_title }}">
+        </div>
+        <div class="movie-card__country">Release: {{ comedyMovie.release_date }} </div>
+        <div class="movie-card__name">{{ comedyMovie.title }}</div>
+        <div class="movie-card__rating">{{ comedyMovie.vote_average | number:'1.1-1' }} / 10</div>
+        <button [routerLink]="['/movie',comedyMovie.id]" class="movie-card__btn">Watch</button>
+      </div>
 
-    </div>
+    </ng-template>
+  </owl-carousel-o>
+
+  <ng-template #loading>Loading...</ng-template>
+
+
 </div>

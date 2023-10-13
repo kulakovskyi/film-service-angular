@@ -1,10 +1,22 @@
-<div class="row mt-4">
-    <h5 class="text-white">Action Movies</h5>
-    <div class="rowposter mt-3 p-2">
-        <ng-container *ngIf="trillerMoviesResults$ | async as trillerMovies; else loading">
-            <img *ngFor="let trillerMovie of trillerMovies" src="https://image.tmdb.org/t/p/original/{{ trillerMovie.poster_path }}" class="rowimg largeposter" alt="{{ trillerMovie.original_title }}"
-                 [routerLink]="['/movie',trillerMovie.id]">
-        </ng-container>
-        <ng-template #loading>Loading...</ng-template>
-    </div>
+<div class="film-row">
+  <h5 class="title-film">Triller Movies</h5>
+  <owl-carousel-o [options]="customOptions"
+                  *ngIf="trillerMoviesResults$ | async as trillerMovies; else loading">
+    <ng-template carouselSlide *ngFor="let trillerMovie of trillerMovies">
+      <div class="movie-card">
+        <div class="movie-card__image">
+          <img src="https://image.tmdb.org/t/p/original/{{ trillerMovie.poster_path }}"
+               alt="{{ trillerMovie.original_title }}">
+        </div>
+        <div class="movie-card__country">Release: {{ trillerMovie.release_date }} </div>
+        <div class="movie-card__name">{{ trillerMovie.title }}</div>
+        <div class="movie-card__rating">{{ trillerMovie.vote_average | number:'1.1-1' }} / 10</div>
+        <button [routerLink]="['/movie',trillerMovie.id]" class="movie-card__btn">Watch</button>
+      </div>
+
+    </ng-template>
+  </owl-carousel-o>
+
+  <ng-template #loading>Loading...</ng-template>
+
 </div>

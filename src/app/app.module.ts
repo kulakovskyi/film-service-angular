@@ -6,6 +6,8 @@ import {NavbarModule} from "./shared/blocks/navbar/navbar.module";
 import {HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { RouterModule} from "@angular/router";
+import {FooterModule} from "./shared/blocks/footer/footer.module";
+
 
 @NgModule({
     declarations: [
@@ -16,11 +18,14 @@ import { RouterModule} from "@angular/router";
         HttpClientModule,
         AppRoutingModule,
         NavbarModule,
+        FooterModule,
         BrowserAnimationsModule,
         RouterModule,
-
     ],
     providers: [],
+    exports: [
+
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

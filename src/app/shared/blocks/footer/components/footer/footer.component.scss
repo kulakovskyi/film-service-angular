@@ -1,0 +1,24 @@
+.footer{
+  padding: 0 0 70px;
+  @media screen and (max-width: 670px){
+    padding: 0 0 30px;
+  }
+  &__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  &__text{
+    text-align: center;
+    color: #6B7280;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    @media screen and (max-width: 670px){
+      font-size: 14px;
+    }
+
+  }
+}

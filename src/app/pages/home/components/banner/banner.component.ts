@@ -36,15 +36,6 @@ export class BannerComponent implements OnInit, OnDestroy{
       0: {
         items: 1
       },
-      400: {
-        items: 1
-      },
-      740: {
-        items: 1
-      },
-      940: {
-        items: 1
-      }
     },
     nav: true
   }
@@ -53,7 +44,6 @@ export class BannerComponent implements OnInit, OnDestroy{
   ngOnInit() {
     this.bSub$ = this.movieService.getBannerData().subscribe(res => {
       this.bannerResults = res.results
-      console.log(res)
     })
 
   }
